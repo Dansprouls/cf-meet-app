@@ -96,3 +96,7 @@ THEN: chart adjusts to show number of events in the selected city.
 ## About RoundUp
 
 This is a serverless, progressive web application, with React using a test-driven development (TDD) approach. The application uses the Google Calendar API to fetch upcoming events.
+
+## How RoundUp uses serverless functions
+
+An authorization server, which utilizes a serverless function ( AWS Lambda ), will be used to generate an authorization token for all authorized users. This will allow authenticated users to be able to access the CareerFoundry calendar event data in the Google Calendar API. The event data will then be able to be used in our app to display events by city and even show event data in chart format.
