@@ -4,6 +4,8 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { extractLocations, getEvents } from "./api";
+import { Row, Col } from "react-bootstrap";
+import "./nprogress.css";
 
 class App extends Component {
   state = {
@@ -27,7 +29,7 @@ class App extends Component {
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
-        this.setState({ events, location: extractLocations(events) });
+        this.setState({ events, locations: extractLocations(events) });
       }
     });
   }
@@ -38,14 +40,22 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <CitySearch
-          locations={this.state.locations}
-          updateEvents={this.updateEvents}
-        />
-        <NumberOfEvents />
-        <EventList events={this.state.events} />
-      </div>
+      <>
+        <div className="App">
+          <Row>
+            <Col md={6}>
+              <CitySearch
+                locations={this.state.locations}
+                updateEvents={this.updateEvents}
+              />
+            </Col>
+            <Col md={6}>
+              <NumberOfEvents />
+            </Col>
+          </Row>
+          <EventList events={this.state.events} />
+        </div>
+      </>
     );
   }
 }

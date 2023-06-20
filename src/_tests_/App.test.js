@@ -5,11 +5,11 @@ import { shallow, mount } from "enzyme";
 import App from "../App";
 import EventList from "../EventList";
 import CitySearch from "../CitySearch";
+import NumberOfEvents from "../NumberOfEvents";
 import { mockData } from "../mock-data";
 import { extractLocations, getEvents } from "../api";
-import { async } from "q";
-import exp from "constants";
 
+//Unit Tests
 describe("<App /> component", () => {
   let AppWrapper;
   beforeAll(() => {
@@ -22,8 +22,13 @@ describe("<App /> component", () => {
   test("render CitySearch", () => {
     expect(AppWrapper.find(CitySearch)).toHaveLength(1);
   });
+
+  test("render NumberOfEvents", () => {
+    expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
+  });
 });
 
+//Integration Tests
 describe("<App /> integration", () => {
   test("App passes 'events' state as a prop to EventList", () => {
     const AppWrapper = mount(<App />);
