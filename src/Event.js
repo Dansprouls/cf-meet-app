@@ -21,11 +21,19 @@ class Event extends Component {
           <p>Event Location: {event.location}</p>
         </div>
         {this.state.showDetails === false && (
-          <div className="event-details">
-            <h3>About this event</h3>
-            <p>Event Start: {new Date(event.start.dateTime).toISOString()}</p>
-            <p>Event End: {new Date(event.end.dateTime).toISOString()}</p>
-            <p>Description: {event.description}</p>
+          <div className="event-container">
+            <h3 className="about-header">About this event</h3>
+            <div className="event-details">
+              <p className="event-start">
+                Event Start: {new Date(event.start.dateTime).toISOString()}
+              </p>
+              <p className="event-end">
+                Event End: {new Date(event.end.dateTime).toISOString()}
+              </p>
+              <p className="event-description">
+                Description: {event.description}
+              </p>
+            </div>
           </div>
         )}
         <button
